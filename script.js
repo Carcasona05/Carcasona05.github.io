@@ -2,8 +2,14 @@
 
 function convertCelsiusToFahrenheit(){
     let celsius = parseFloat(prompt("Enter The temperature in Celsius: "));
+
+    if (isNaN(celsius)){
+        alert("Invalid Input! Please Input a valid number ");
+    }
+    else{
     let temp_in_fahrenheit = ((celsius * 1.8)+32).toFixed(2);
-    alert("The temperature in Fahrenheit is: "+temp_in_fahrenheit);
+    alert("The temperature in Fahrenheit is: "+temp_in_fahrenheit+ "°F");
+    }
 }
 
 
@@ -12,7 +18,11 @@ function getLongerWord(){
 let word1 = prompt("Enter word 1: ");
 let word2 = prompt("Enter word 2: ");
 
-if (word1.length > word2.length)
+if(!isNaN(word1) && !isNaN(word2)){
+    alert("Invalid Input! Please Input a valid word "); 
+}
+
+else if (word1.length > word2.length)
 {
     alert("The longer word is: "+word1);
 }
@@ -89,20 +99,22 @@ function BasicMathOps(){
     let num1 = parseInt(prompt("Enter num 1: "));
     let num2 = parseInt(prompt("Enter num 2: "));
     let total;
+
+
     switch(operators){
-        case 'M':
+        case 'M': case '*':
             total = num1 * num2;
             alert(`Multiplying ${num1} by ${num2} is: ${total}`);
             break;
-        case 'D':
+        case 'D': case '/':
             total = num1 / num2;
             alert(`Dividing ${num1} by ${num2} is: ${total}`);
             break;
-        case 'A':
+        case 'A': case '+':
             total = num1 + num2;
             alert(`Adding ${num1} by ${num2} is ${total}`);
             break;
-        case 'S':
+        case 'S': case '-':
             total = num1 - num2;
             alert(`Subtracting ${num1} by ${num2} is: ${total}`);
             break;
@@ -119,10 +131,13 @@ function ComputeAcceleration(){
     let initialVelocity = parseFloat(prompt("Enter the inital velocity m/s: "));
     let finalVelocity = parseFloat(prompt("Enter the Final velocity m/s: "));
     let changeInTime = parseFloat(prompt("Enter the change in time in seconds: "));
-
+    if (isNaN(initialVelocity)&&isNaN(finalVelocity)&&isNaN(changeInTime)){
+        alert("Invalid Input! Please Input a valid number ");
+    }
+    else{
     let acceleration = (finalVelocity - initialVelocity) / changeInTime;
     alert("Acceleration: " + acceleration);
-    
+    }
 }
 
 
