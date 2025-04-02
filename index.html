@@ -62,14 +62,29 @@ const slides = document.querySelectorAll(".slide");
 const totalSlides = slides.length;
 let isPaused = false;
 let interval;
+let isTransitioning = false;
 
 
 document.querySelector(".next").addEventListener("click", () => {
+    if (isTransitioning) return; // Block multiple fast clicks
+    isTransitioning = true;
+    
+    setTimeout(() => {
+        isTransitioning = false;
+    }, 1000); // 1-second delay
+
     index = (index + 1) % totalSlides;
     updateCarousel();
 });
 
 document.querySelector(".prev").addEventListener("click", () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    setTimeout(() => {
+        isTransitioning = false;
+    }, 1000); // 1-second delay
+
     index = (index - 1 + totalSlides) % totalSlides;
     updateCarousel();
 });
